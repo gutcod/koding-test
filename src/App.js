@@ -10,9 +10,12 @@ class App extends React.Component {
     this.state = {
       input: "",
       user: "",
+      date: new Date(),
       cui: [
         {
-          cui: "",
+          nr: "",
+          adresa: "",
+          denumire: "",
         },
       ],
     };
@@ -28,7 +31,7 @@ class App extends React.Component {
       {
         cui: this.state.input,
 
-        data: "2020-02-14",
+        data: this.state.date,
       },
     ];
     // Simple POST request with a JSON body using fetch
@@ -39,7 +42,17 @@ class App extends React.Component {
     };
     fetch(url, requestOptions)
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        this.setState(
+          Object.assign(this.state.cui, {
+            nr: data[0].cui,
+            adresa: data[0].adresa,
+            denumire: data[0].denumire,
+          })
+        );
+        console.log(data);
+      });
+    console.log(this.state.cui);
   };
   render() {
     return (
