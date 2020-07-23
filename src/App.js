@@ -12,6 +12,33 @@ class App extends React.Component {
       cui: "",
     };
   }
+
+  componentDidMount() {
+    const url = "https://webservicesp.anaf.ro/PlatitorTvaRest/api/v4/ws/tva";
+    const body = [
+      {
+        cui: 1234,
+
+        data: "2015-02-14",
+      },
+
+      {
+        cui: 5678,
+
+        data: "2015-02-14",
+      },
+    ];
+
+    // Simple POST request with a JSON body using fetch
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    };
+    fetch(url, requestOptions)
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  }
   onInputChange = (input) => {
     this.setState({ input: input.target.value });
   };
