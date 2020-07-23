@@ -9,26 +9,28 @@ class App extends React.Component {
 
     this.state = {
       input: "",
-      cui: "",
+      user: "",
+      cui: [
+        {
+          cui: "",
+        },
+      ],
     };
   }
 
-  componentDidMount() {
-    const url = "https://webservicesp.anaf.ro/PlatitorTvaRest/api/v4/ws/tva";
+  onInputChange = (input) => {
+    this.setState({ input: input.target.value });
+  };
+  onSubmit = () => {
+    this.setState({ user: this.state.input });
+    const url = "http://localhost:3300/submit";
     const body = [
       {
-        cui: 1234,
+        cui: this.state.input,
 
-        data: "2015-02-14",
-      },
-
-      {
-        cui: 5678,
-
-        data: "2015-02-14",
+        data: "2020-02-14",
       },
     ];
-
     // Simple POST request with a JSON body using fetch
     const requestOptions = {
       method: "POST",
@@ -38,13 +40,6 @@ class App extends React.Component {
     fetch(url, requestOptions)
       .then((response) => response.json())
       .then((data) => console.log(data));
-  }
-  onInputChange = (input) => {
-    this.setState({ input: input.target.value });
-  };
-  onSubmit = () => {
-    this.setState({ cui: this.state.input });
-    console.log(this.state.cui);
   };
   render() {
     return (
