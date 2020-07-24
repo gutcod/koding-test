@@ -3,6 +3,7 @@ import React from "react";
 import "./App.css";
 import Users from "./components/user/users.component";
 import SimpleTable from "./components/box/box.component";
+import Data from "./components/database/db.table.component";
 
 class App extends React.Component {
   constructor() {
@@ -13,6 +14,7 @@ class App extends React.Component {
       submit: "",
       date: new Date(),
       cui: [],
+      db: [],
     };
   }
 
@@ -69,14 +71,25 @@ class App extends React.Component {
       });
     console.log(this.state.cui);
   };
+  loadData = () => {
+    fetch("http://localhost:3300/database")
+      .then((respone) => respone.json())
+      .then((data) => {
+        this.setState({ db: data });
+      });
+  };
   render() {
     return (
       <div className="App">
         <Users onInputChange={this.onInputChange} onSubmit={this.onSubmit} />
         <SimpleTable cui={this.state.cui} />
-        <button className="w-30 grow f4 link ph3 pv2 dib white bg-light-purple">
+        <button
+          className="w-30 grow f4 link ph3 pv2 dib white bg-light-purple"
+          onClick={this.loadData}
+        >
           Database
         </button>
+        <Data db={this.state.db} />
       </div>
     );
   }
