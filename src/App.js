@@ -2,6 +2,7 @@ import React from "react";
 
 import "./App.css";
 import Users from "./components/user/users.component";
+import SimpleTable from "./components/box/box.component";
 
 class App extends React.Component {
   constructor() {
@@ -9,23 +10,17 @@ class App extends React.Component {
 
     this.state = {
       input: "",
-      user: "",
+      submit: "",
       date: new Date(),
-      cui: [
-        {
-          nr: "",
-          adresa: "",
-          denumire: "",
-        },
-      ],
+      cui: [],
     };
   }
 
-  onInputChange = (input) => {
-    this.setState({ input: input.target.value });
+  onInputChange = (event) => {
+    this.setState({ input: event.target.value });
   };
   onSubmit = () => {
-    this.setState({ user: this.state.input });
+    this.setState({ submit: this.state.input });
     const url = "http://localhost:3300/submit";
     const body = [
       {
@@ -45,12 +40,11 @@ class App extends React.Component {
       .then((data) => {
         this.setState(
           Object.assign(this.state.cui, {
-            nr: data[0].cui,
-            adresa: data[0].adresa,
-            denumire: data[0].denumire,
+            nr: data.cui,
+            adresa: data.adresa,
+            denumire: data.denumire,
           })
         );
-        console.log(data);
       });
     console.log(this.state.cui);
   };
@@ -58,6 +52,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Users onInputChange={this.onInputChange} onSubmit={this.onSubmit} />
+        <SimpleTable cui={this.state.cui} />
       </div>
     );
   }

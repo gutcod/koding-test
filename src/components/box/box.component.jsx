@@ -1,5 +1,8 @@
 import React from "react";
 
-export const Box = () => {
-  return <div></div>;
-};
+const Form = ({ cui }) => (
+  <div>
+    <p>adresa:{cui.adresa}</p>
+  </div>
+);
+export default Form;
