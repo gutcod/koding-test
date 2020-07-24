@@ -23,7 +23,7 @@ class App extends React.Component {
   };
   onSubmit = () => {
     this.setState({ submit: this.state.input });
-    const url = "http://localhost:3300/submit";
+    const url = "https://cui-api.herokuapp.com/submit";
     const body = [
       {
         cui: this.state.input,
@@ -45,34 +45,13 @@ class App extends React.Component {
             nr: data.cui,
             adresa: data.adresa,
             denumire: data.denumire,
-            data: data.data,
-            scpTVA: data.scpTVA,
-            data_inceput_ScpTVA: data.data_inceput_ScpTVA,
-            data_sfarsit_ScpTVA: data.data_sfarsit_ScpTVA,
-            data_anul_imp_ScpTVA: data.data_anul_imp_ScpTVA,
-            mesaj_ScpTVA: data.mesaj_ScpTVA,
-            dataInceputTvaInc: data.dataInceputTvaInc,
-            dataSfarsitTvaInc: data.dataSfarsitTvaInc,
-            dataActualizareTvaInc: data.dataActualizareTvaInc,
-            dataPublicareTvaInc: data.dataPublicareTvaInc,
-            tipActTvaInc: data.tipActTvaInc,
-            statusTvaIncasare: data.statusTvaIncasare,
-            dataInactivare: data.dataInactivare,
-            dataReactivare: data.dataReactivare,
-            dataPublicare: data.dataPublicare,
-            dataRadiere: data.dataRadiere,
-            statusInactivi: data.statusInactivi,
-            dataInceputSplitTVA: data.dataInceputSplitTVA,
-            dataAnulareSplitTVA: data.dataAnulareSplitTVA,
-            statusSplitTVA: data.statusSplitTVA,
-            iban: data.iban,
           })
         );
       });
     console.log(this.state.cui);
   };
   loadData = () => {
-    fetch("http://localhost:3300/database")
+    fetch("https://cui-api.herokuapp.com/database")
       .then((respone) => respone.json())
       .then((data) => {
         this.setState({ db: data });
