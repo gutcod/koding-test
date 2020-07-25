@@ -48,7 +48,6 @@ class App extends React.Component {
           })
         );
       });
-    console.log(this.state.cui);
   };
   loadData = () => {
     fetch("https://cui-api.herokuapp.com/database")
