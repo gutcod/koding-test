@@ -73,9 +73,7 @@ const Card = ({
       <td className="pv3 pr3 bb b-black-20 f6 bg-washed-green">
         {dataAnulareSplitTVA}
       </td>
-      <td className="pv3 pr3 bb b-black-20 f6">
-        {{ statusSplitTVA } === undefined ? `${statusSplitTVA}` : ""}
-      </td>
+      <td className="pv3 pr3 bb b-black-20 f6">{statusSplitTVA}</td>
       <td className="pv3 pr3 bb b-black-20 f6 bg-washed-green">{iban}</td>
     </tr>
   );

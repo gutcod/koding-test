@@ -96,11 +96,11 @@ const Form = ({ cui }) => {
             </li>
             <li>
               <strong>statusSplitTVA:</strong>
-              {`${cui.dataAnulareSplitTVA}`}
+              {`${cui.statusSplitTVA}`}
             </li>
 
             <li>
-              <strong>dataAnulareSplitTVA:</strong>
+              <strong>Iban:</strong>
               {cui.iban}
             </li>
           </ul>

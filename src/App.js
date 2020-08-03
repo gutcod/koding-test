@@ -43,10 +43,32 @@ class App extends React.Component {
         this.setState(
           Object.assign(this.state.cui, {
             nr: data.cui,
+            data: data.data,
             adresa: data.adresa,
             denumire: data.denumire,
+            scpTVA: data.scpTVA,
+            data_inceput_ScpTVA: data.data_inceput_ScpTVA,
+            mesaj_ScpTVA: data.mesaj_ScpTVA,
+            data_sfarsit_ScpTVA: data.data_sfarsit_ScpTVA,
+            data_anul_imp_ScpTVA: data.data_anul_imp_ScpTVA,
+            dataInceputTvaInc: data.dataInceputTvaInc,
+            dataSfarsitTvaInc: data.dataSfarsitTvaInc,
+            dataActualizareTvaInc: data.dataActualizareTvaInc,
+            dataPublicareTvaInc: data.dataPublicareTvaInc,
+            tipActTvaInc: data.tipActTvaInc,
+            statusTvaIncasare: data.statusTvaIncasare,
+            dataInactivare: data.dataInactivare,
+            dataReactivare: data.dataReactivare,
+            dataPublicare: data.dataPublicare,
+            dataRadiere: data.dataRadiere,
+            statusInactivi: data.statusInactivi,
+            dataInceputSplitTVA: data.dataInceputSplitTVA,
+            dataAnulareSplitTVA: data.dataAnulareSplitTVA,
+            statusSplitTVA: data.statusSplitTVA,
+            iban: data.iban,
           })
         );
+        console.log(data);
       });
   };
   loadData = () => {
