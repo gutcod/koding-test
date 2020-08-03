@@ -76,6 +76,7 @@ class App extends React.Component {
       .then((respone) => respone.json())
       .then((data) => {
         this.setState({ db: data });
+        console.log(data);
       });
   };
   render() {
